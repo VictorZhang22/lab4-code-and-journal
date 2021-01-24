@@ -1,0 +1,164 @@
+def fineMultiply():
+    x = 0 #an integer to add the numbers to
+    for number in range(1, 1000): #for loop going from 0 - 1000
+        if number % 3 == 0 or number % 5 == 0: #find numbers that are eligible
+            x = x + number #add the eligible numbers to the integer I created earlier
+    print(x) #print the sum
+
+
+
+
+def calculate():
+    sumOfEven = 0 # an integer to add the numbers to
+    x = 1 #previous number in the sequence
+    y = 2 #current number in the sequence
+    while y <= 4000000: #while loop to keep the maximum under 4 million
+        if y % 2 == 0: #to find the even numbers
+            sumOfEven += y #add the even numbers to the integer
+        y += x #create the next "current number"
+        x = y - x #create the next "previous number"
+    return sumOfEven #return the results 
+
+
+
+
+def isprime(n): # this function checks to see if the input is a prime number, if it is, then the function will return it, and vice versa
+    for i in range(2, n):
+        if n % i == 0:
+            break
+    else:
+        return n 
+
+
+def find_largest_prime_factor(n):
+    factor = [] # I intend to store all the prime factors in a list and later compare each element
+    num = n # basically this is the number I am inputting
+    i = 1 # so here I set i to 1
+    if num >= 2: # this if statement is to see if the num inputted is bigger than 2, otherwise it won't work with the rest of the program
+    
+        while i <= num: # while loop here because the value of i will be updated s
+            i += 1 # so here I am updating i
+            if num % i == 0: # if i is a factor
+                isprime(i) # I run i through my helper function to see if it is a prime factor
+                factor.append(i) # only the returned number will be added to the list that contains the prime factors
+                num = num / i # here I update the number so I will proceed to the next step of the finding process
+                i = 1 # since a new cycle is starting, I`m setting i back to 1
+    else:
+        print("error") # so this else statement shows that the number isn`t eligible for the program
+
+    largest = factor[0] # so I have the first number of the list as the largest number
+    for num in factor: # this for loop goes through the function
+        if num > largest: # this if statement checks to see if the current number of the list is bigger than the first number of the list
+            largest = num #if it is, then the largest number gets updated
+    print(largest) # at last, the biggest prime factor gets returned
+
+
+
+
+def is_palindrone(myList): # so this is my helper function
+    newResults = [] # this list will contain palindrones
+    for x in myList:
+        if str(x) == str(x)[::-1]: # this line tests to see if the numbers are actually palindronic
+            newResults.append(x) # the palindrones are in the list now
+    smallest = newResults[0] # I assign the first element of the list to be the smallest variable
+    for y in newResults:
+        if y > smallest: # this line tests to see if any of the elements in the list is bigger than the smallest variable
+            smallest = y # if the if statement is true, then the smallest number will become the biggest number seen so far
+    return smallest # this line returns the biggest palindrone
+
+
+def is_biggest_palindrone(): # this is my main function
+    results = [] # this is a list that will have all of the possible results
+    for x in range(100, 1000): 
+        for y in range(100, 1000): # the nested loop makes sure that the products between every number from 100-1000
+            results.append(x*y) # this line appends the numbers to the list
+    answer = is_palindrone(results) # this line calls for a helper function to make sure that only the biggest palindrone number is selected and returned
+    return answer # this line returns the answer
+
+
+
+
+def smallest_multiple():
+    x = 1 # I create a variable that holds the smallest positive number
+    while True: # Here I have a while loop because I need to use the "break" line
+
+        if x % 1 == 0 and x % 2 == 0 and x % 3 == 0 and x % 4 == 0 and x % 5 == 0 and x % 6 == 0 and x % 7 == 0 and x % 8 == 0 and x % 9 == 0 and x % 10 == 0 and x % 11 == 0 and x % 12 == 0 and x % 13 == 0 and x % 14 == 0 and x % 15 == 0 and x % 16 == 0 and x % 17 == 0 and x % 18 == 0 and x % 19 == 0 and x % 20 == 0: # This line makes sure that the number is divisible by all of the numbers between 1 and 20
+            break # If the number satisfies the if statement then I wil end the program
+        else: # If not
+            x += 1 # The smallest number increases by 1 so that I will not miss a single number
+    print(x)
+
+
+
+
+def sumSquareDifference():
+    x = 0 # here I have one variable which has the value of 0, and this will be the square of the sum of the numbers
+    y = 0 # here I have one variable which has the value of 0, and this will be the sum of square of the numbers
+
+    for i in range(1, 101): # this for loop to go through all of the numbers between 1 and 100
+        x = x + i # this line adds a value to the previous variable x, which is 0 at the start
+    x = x**2 # this is the final result of the square of the sum of the numbers, hence the **2
+
+    for h in range(1, 101): # this for loop does the same thing as the first one
+        y = y+h**2 
+        # this line adds the value of the squared number to the value 0 (which is the rum of all of the numbers squared)
+
+# the next part is not necessary but it helps. I can just say y-x and then enter the value, but what if the y value is smaller than x value? Then the result will be negative. I know that in this problem it is impossible to get a negative value, but I thought that it would be convenient if I added it. 
+    if y > x: # I do not want to end up with a negative number, so I use this line to check if y is bigger than x
+        result = y - x # if it is, then y minus x
+    else: 
+        result = x - y # if x is bigger than y, then x minus y
+ # the previous part of the script just makes sure that the result is always positive       
+    print(result)
+
+
+
+
+def isItPrime(n): # this function checks to see if the input is a prime number, if it is, then the function will return it, and vice versa
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def primeNum10001():
+    primeNumbers = [] # this list is for storing the prime numbers
+    start = 1 # I start out with the smallest number, which is 1
+    while len(primeNumbers) < 10001: # I want to find the 10001st prime number, so I set the length of the list to less than 10001
+        start += 1 # this line ensures that the program will not miss a single number
+        if isItPrime(start): # this line determines whether the number is a prime number or not
+            primeNumbers.append(start) # is the previous line returns True, then that number is added to the list
+    print(primeNumbers[-1]) # when the while loop is no longer true, the program will return the last number in the list, which is the 1001st prime number
+
+
+
+
+def getProduct(n): # this is my helper function for the findLargestProduct function
+    product = 1 # I have a variable that has value 1
+    while n != 0: # this while loop to make sure that the number is not equal to 0
+        product = product * (n % 10) # here I update the value of product
+        n = n // 10 # I square the number to the nearest whole number
+    return product # at the very end of the function I return the product
+
+
+def findLargestProduct():
+    results = [] # this list will contain all of the products of the groups of numbers
+    potentials = [] # this list will contain all of the groups of numbers
+    text = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450"
+    
+    for i in range(0, len(text) - 13): # this for loop does through the original text and splices the text in groups of 13
+        potentials.append(text[i: i + 13]) # I borrowed this line from my Lab2 work where I spliced the DNA sequences. I wrote this in a for loop form so it is easier for me to understand
+
+
+    for potential in potentials: # so this is another for loop that goes through the potentials list, which already has all of the groups in it
+        result = getProduct(int(potential)) # here I call my helper function, where I find the product of multiplying every element in a string
+        results.append(result) # I add the products in the results list
+
+    print(max(results)) # since technically I am not required to finish the program, I skipped a few lines of code by using the max() product to find the biggest product of in the results list and print it
+
+  
+
+
+
+
+if __name__ == "__main__":
